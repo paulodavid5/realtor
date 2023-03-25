@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router'
+import { useLocation , useNavigate } from 'react-router'
 
 import logo from '../assets/logo.svg'
 
@@ -12,6 +12,8 @@ export default function Header() {
       return true
     }
   }
+
+
   return (
     <div className='bg-white border-b shadow-sm sticky top-0 z-50'>
         <header className='flex justify-between items-center p-3 max-w-6xl mx-auto'>
@@ -21,15 +23,15 @@ export default function Header() {
             <div>
               <ul className='flex space-x-10'>
                 <li
-                 className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute('/') && 'text-black border-b-red-500'}`}
+                 className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent' }`}
                  onClick={() => navigate('/')}
                  >Home</li>
                 <li
-                className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute('/Offers') && 'text-black border-b-red-500'}`}
+                className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/offers') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
                 onClick={() => navigate('/offers')}
                 >Offers</li>
                 <li
-                className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute('/SignIn') && 'text-black border-b-red-500'}`}
+                className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
                 onClick={() => navigate('/sign-in')}
                 >Sign in</li>
               </ul>
