@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom'
 import  {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 import OAuth from "../components/OAuth"
 
+//toast
+import { toast } from "react-toastify"
+
 //firebase
 
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
@@ -46,9 +49,11 @@ export default function SignUp() {
       formDataCopy.timestamp = serverTimestamp()
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy)
+      toast.success('Signup was successful!')
       navigate('/')
     } catch (error) {
-      console.log(error)
+      // eslint-disable-next-line no-undef
+      toast.error('Something went wrong with the registration.')
     }
   }
 
