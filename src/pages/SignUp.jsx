@@ -68,7 +68,7 @@ export default function SignUp() {
         <img className="w-full rounded-2xl" src="https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
       </div>
       <div className="w-full md:w-[67%] lg:w-[40%]" >
-        <form onSubmit={onSubmit} method="post" className="">
+        <form onSubmit={onSubmit}>
           <div>
           <input 
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out mb-6" 
