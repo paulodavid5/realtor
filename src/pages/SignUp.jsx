@@ -1,8 +1,12 @@
 import { useState } from "react"
-import {Link} from 'react-router-dom'
-import  {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 import OAuth from "../components/OAuth"
 
+//react-router
+import {Link} from 'react-router-dom'
+import { useNavigate } from "react-router";
+
+//library
+import  {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 //toast
 import { toast } from "react-toastify"
 
@@ -12,7 +16,6 @@ import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/a
 import {db} from '../firebase'
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
-import { useNavigate } from "react-router";
 
 
 export default function SignUp() {
@@ -49,7 +52,7 @@ export default function SignUp() {
       formDataCopy.timestamp = serverTimestamp()
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy)
-      toast.success('Signup was successful!')
+      toast.success('Sign-up was successful!')
       navigate('/')
     } catch (error) {
       // eslint-disable-next-line no-undef
