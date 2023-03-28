@@ -1,11 +1,29 @@
 import { useState } from "react"
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import OAuth from "../components/OAuth"
 
+import { toast } from 'react-toastify'
+
+//firebase
+import { getAuth, sendPasswordResetEmail } from "firebase/auth"
+
 export default function ForgotPassword() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   function onChange(e){
    setEmail(e.target.value)
+  }
+
+  async function onSubmit(e){
+    e.preventDefault()
+    try {
+      const auth = getAuth()
+      await sendPasswordResetEmail(auth, email)
+      toast.success('Email was sent successfully!')
+      navigate('/sign-in')
+    } catch (error) {
+      toast.error('Email not found.')
+    }
   }
 
   return (
@@ -16,7 +34,7 @@ export default function ForgotPassword() {
         <img className="w-full rounded-2xl" src="https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
       </div>
       <div className="w-full md:w-[67%] lg:w-[40%]" >
-        <form action="" method="post" className="">
+        <form onSubmit={onSubmit}>
           <div>
           <input 
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out mb-6" 
