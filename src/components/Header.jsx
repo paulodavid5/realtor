@@ -3,6 +3,7 @@ import { useLocation , useNavigate } from 'react-router'
 import logo from '../assets/logo.svg'
 
 
+
 export default function Header() {
   const location = useLocation()
   const navigate = useNavigate()
@@ -12,6 +13,7 @@ export default function Header() {
       return true
     }
   }
+
 
 
   return (
@@ -31,9 +33,19 @@ export default function Header() {
                 onClick={() => navigate('/offers')}
                 >Offers</li>
                 <li
-                className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
-                onClick={() => navigate('/sign-in')}
-                >Sign in</li>
+                  className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
+                  onClick={() => navigate('/sign-in')}
+                  >Sign in</li>
+                
+                {/* {
+                  loggedIn ? <li
+                  className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
+                  onClick={() => navigate('/profile')}
+                  >Profile</li>  : <li
+                  className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
+                  onClick={() => navigate('/sign-in')}
+                  >Sign in</li>
+                } */}
               </ul>
             </div>
         </header>
