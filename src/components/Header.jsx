@@ -52,15 +52,6 @@ export default function Header() {
                   onClick={() => navigate('/profile')}
                   >{pageState}</li>
                 
-                {/* {
-                  loggedIn ? <li
-                  className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
-                  onClick={() => navigate('/profile')}
-                  >Profile</li>  : <li
-                  className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
-                  onClick={() => navigate('/sign-in')}
-                  >Sign in</li>
-                } */}
               </ul>
             </div>
         </header>
