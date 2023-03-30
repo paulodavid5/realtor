@@ -1,12 +1,27 @@
+import { useEffect, useState } from 'react'
 import { useLocation , useNavigate } from 'react-router'
 
 import logo from '../assets/logo.svg'
 
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+
 
 
 export default function Header() {
+  const [pageState, setPageState] = useState('Sign In')
   const location = useLocation()
   const navigate = useNavigate()
+  
+  const auth = getAuth()
+  useEffect(() => {
+    onAuthStateChanged(auth,(user) => {
+      if(user){
+        setPageState('Profile')
+      }else{
+        setPageState('Sign In')
+      }
+    })
+  }, [auth])
 
   function pathMatchRoute(route) {
     if (route === location.pathname){
@@ -33,9 +48,9 @@ export default function Header() {
                 onClick={() => navigate('/offers')}
                 >Offers</li>
                 <li
-                  className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
-                  onClick={() => navigate('/sign-in')}
-                  >Sign in</li>
+                  className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px]  ${pathMatchRoute('/sign-in') || pathMatchRoute('/profile') ? 'text-gray-700 border-b-red-600' : 'border-b-transparent'}`}
+                  onClick={() => navigate('/profile')}
+                  >{pageState}</li>
                 
                 {/* {
                   loggedIn ? <li
